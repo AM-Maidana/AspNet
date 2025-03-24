@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aula1", "Aula1\Aula1.csproj", "{C91F5DDE-C6E2-432B-A765-3778996C2FFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo_2_ASP", "Exemplo_2_ASP\Exemplo_2_ASP.csproj", "{3FC1A1FE-58B0-44B6-8112-78D46BDA9EAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo_3_Endpoint_ASPNET", "Exemplo_3_Endpoint_ASPNET\Exemplo_3_Endpoint_ASPNET.csproj", "{BA403956-3C90-4B44-B036-7BF81E682073}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{C91F5DDE-C6E2-432B-A765-3778996C2FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C91F5DDE-C6E2-432B-A765-3778996C2FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C91F5DDE-C6E2-432B-A765-3778996C2FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC1A1FE-58B0-44B6-8112-78D46BDA9EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC1A1FE-58B0-44B6-8112-78D46BDA9EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC1A1FE-58B0-44B6-8112-78D46BDA9EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC1A1FE-58B0-44B6-8112-78D46BDA9EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA403956-3C90-4B44-B036-7BF81E682073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA403956-3C90-4B44-B036-7BF81E682073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA403956-3C90-4B44-B036-7BF81E682073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA403956-3C90-4B44-B036-7BF81E682073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

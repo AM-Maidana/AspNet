@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,68 +11,103 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             flex-direction: column;
+            background: linear-gradient(135deg, #cce6ff, #1e90ff);
+
         }
+
         nav {
             background: #003366;
             padding: 30px;
             display: flex;
             flex-direction: row;
         }
+
         nav a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
         }
-        h2{
+
+        h2 {
             color: white;
         }
-        .menu{
+
+        .menu {
             justify-items: flex-start;
             width: 100%;
         }
-        .foto
-        {
+
+        .foto {
             display: flex;
             margin-right: 2rem;
             justify-content: flex-end;
             width: 100%;
         }
+
         img {
             border-radius: 50%;
             height: 100px;
         }
-        h3
-        {
-            color: #0059b3;
+
+        h1,
+        h3 {
+            color: #003366;
         }
-        #sobreMim, #experiencias, #informacoes{
+
+        section {
+            background-color: white;
+            margin: 15px auto;
+            width: 90%;
+            padding: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            /* Sombra leve */
+        }
+
+        #sobreMim,
+        #experiencias,
+        #informacoes {
             padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-items: flex-start;
+
+
         }
     </style>
 </head>
+
 <body>
 
     <nav>
         <div class="menu">
-        <h2>Amanda de Menezes Maidana</h2>
-        <br>
-        <a href="#sobreMim">Sobre mim</a>
-        <a href="#experiencias">Experiências</a>
-        <a href="#informacoes">Contato</a>
+            <h2>Amanda de Menezes Maidana</h2>
+            <br>
+            <a href="#sobreMim">Sobre mim</a>
+            <a href="#experiencias">Experiências</a>
+            <a href="#informacoes">Contato</a>
         </div>
         <div class="foto">
-        <img src="icone.png" alt="fot de perfil"> 
+            <img src="icone.png" alt="fot de perfil">
         </div>
     </nav>
 
     <section id="sobreMim">
         <h1>Olá, me chamo Amanda!</h1>
-        <p>Tenho 21 anos e sou de Campo Grande - MS...</p>
-
+        <p>Tenho 21 anos e sou naturalmente da cidade de Campo Grande - MS, sou formada em Tecnologia de Sistemas para
+            Internet pelo Instituto Federal de Mato Grosso do Sul. Atualmente,
+            busco uma oportunidade de adentrar e crescer no mercado de tecnologia.<br>
+            <br>
+            Meus interesses seguem na área de inteligência artificial, análise de dados, entre muitos outros, quero
+            continuar me aprofundando nesses temas para poder me destacar no mercado.<br>
+            Acredito que qualquer experiência pode contribuir para meu crescimento, e gostaria muito de poder trabalhar
+            com você!<br>
+        </p>
+        <br>
         <h3>Algumas linguagens a qual tive contato:</h3>
         <ul>
             <li>Java</li>
@@ -80,30 +116,36 @@
             <li>PHP</li>
             <li>SpringBoot</li>
         </ul>
-
+        <br>
         <h3>Ferramentas de Desenvolvimento:</h3>
         <ul>
             <li>Android Studio</li>
             <li>Eclipse</li>
             <li>Visual Studio Code</li>
             <li>PostMan</li>
-            <li>Postgres Admin</li>
+            <li>PostgreSQL</li>
             <li>MySQL</li>
         </ul>
-
+        <br>
         <h3>Conheça meus projetos no meu GitHub:</h3>
         <a href="https://github.com/AM-Maidana" target="_blank">AM-Maidana</a>
+        <br>
+        <hr>
     </section>
 
     <section id="experiencias">
         <h3>Experiências Anteriores:</h3>
         <ul>
-            <li><strong>Estágio - Suporte/ Atendimento ao cliente (2022)</strong><br> Cigam - You Select Gestão e Tecnologia</li>
+            <li><strong>Estágio - Suporte/ Atendimento ao cliente (2022)</strong><br> Cigam - You Select Gestão e
+                Tecnologia</li>
             <li><strong>Estágio - Financeiro/ Atendimento ao cliente (2023)</strong><br> Faculdade Faprime</li>
             <li><strong>Auxiliar Financeiro (2023 - 2024)</strong><br> Lótus Comércio de Produtos de Limpeza</li>
             <li><strong>Recepcionista (2024)</strong><br> Cartório do 7° Ofício Zonta</li>
             <li><strong>Jovem Aprendiz (2024 - Atualmente)</strong><br> Digix</li>
         </ul>
+        <br>
+        <hr>
+
     </section>
 
     <section id="informacoes">
@@ -113,7 +155,9 @@
         <p>Instagram: @manda_mnzs</p>
         <p>LinkedIn: Amanda Maidana</p>
         <p>GitHub: <a href="https://github.com/AM-Maidana" target="_blank">AM-Maidana</a></p>
+
     </section>
 
 </body>
+
 </html>
