@@ -35,6 +35,7 @@ namespace Exercicios_ASPNET_Banco
                 options.UseNpgsql(connectionStrings));
 
             builder.Services.AddControllers();
+            
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -45,6 +46,11 @@ namespace Exercicios_ASPNET_Banco
             app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            
             app.UseAuthorization();
             app.MapControllers();
             app.Run();

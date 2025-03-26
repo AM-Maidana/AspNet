@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Exercicios_ASPNET_Banco.Models
 {
-    [Table("maquinas")]
+    [Table("maquina")]
     public class Maquina
     {
         [Column("id")]
@@ -18,14 +18,14 @@ namespace Exercicios_ASPNET_Banco.Models
         public int velocidade {get; set;}
         [Column("harddisk")]
         public int harddisk {get; set;}
-        [Column("placarede")]
-        public int placarede {get; set;}
-        [Column("memoriaram")]
-        public int memoriaram {get; set;}
-        [Column("usuario_id")]
-        public int usuario_id {get; set;}
-        [ForeignKey("usuario_id")]
-        [Column("usuario_id")]
+        [Column("placa_Rede")]
+        public int placa_Rede {get; set;}
+        [Column("memoria_Ram")]
+        public int memoria_Ram {get; set;}
+        [Column("id_usuario")]
+        public int id_usuario {get; set;}
+        [ForeignKey("id_usuario")]
+        [Column("id_usuario")]
         public Usuario usuario { get; set; }
     }
 }

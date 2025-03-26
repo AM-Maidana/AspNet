@@ -7,17 +7,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Exercicios_ASPNET_Banco.Models
 {
-    [Table("softwares")]
+    [Table("software")]
     public class Software
     {
-        [Column("id")]
+        [Column("id_software")]
         public int id {get; set;}
         [Column("produto")]
         public string produto {get; set;}
-        [Column("harddisk")]
-        public int harddisk {get; set;}
-        [Column("memoriaram")]
-        public int memoriaram {get; set;}
+        [Column("hardDisk")]
+        public int hardDisk {get; set;}
+        [Column("memoria_Ram")]
+        public int memoria_Ram {get; set;}
         [Column("maquina_id")]
         public int maquina_id {get; set;}
         [ForeignKey("maquina_id")]

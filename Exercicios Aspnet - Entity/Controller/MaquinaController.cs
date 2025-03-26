@@ -14,42 +14,42 @@ namespace Exercicios_ASPNET_Banco.Controller
 {
     [ApiController]
     [Route("[controller]")]
-    public class SoftwareController : ControllerBase
+    public class MaquinaController : ControllerBase
     {
         private readonly AppDbContext _context; //Readonly é uma variável que só pode ser inicializada no construtor,
         /*o AppDbContext é a classe que representa o banco de dados*/
-        public SoftwareController(AppDbContext context) /*Construtor que recebe p 
+        public MaquinaController(AppDbContext context) /*Construtor que recebe p 
         AppDbContext que é a classe que representa o banco de dados*/
         {
             _context = context;
         }
         [HttpGet]
-        public async Task<IEnumerable<Software>> Get() //retorna uma lista de usuários
+        public async Task<IEnumerable<Maquina>> Get() //retorna uma lista de usuários
         {
             /*await é uma palavra chave que só pode swe usada em metódos que são marcados com async*/
-            return await _context.Softwares.ToListAsync(); // Retorna todos os usuários do banco
+            return await _context.Maquinas.ToListAsync(); // Retorna todos os usuários do banco
 
         }
         [HttpPost]
-        public async Task<ActionResult<Software>> Post([FromBody] Software software)
+        public async Task<ActionResult<Maquina>> Post([FromBody] Maquina maquina)
         {
-            _context.Softwares.Add(software); //Adiciona o usuario no banco de dados
+            _context.Maquinas.Add(maquina); //Adiciona o usuario no banco de dados
             await _context.SaveChangesAsync(); // Salva as alterações do banco
 
-            return software; // Retorna o usuári
+            return maquina; // Retorna o usuári
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult<Software>> Put (int id, [FromBody] Software software)
+        public async Task<ActionResult<Maquina>> Put (int id, [FromBody] Maquina maquina)
         {
-            var existente = await _context.Softwares.FindAsync(id);
+            var existente = await _context.Maquinas.FindAsync(id);
             if (existente == null) return NotFound();
 
-            existente.produto = software.produto;
-            existente.harddisk = software.harddisk;
-            existente.memoriaram = software.memoriaram;
-            existente.maquina_id = software.maquina_id;
-
-
+            existente.tipo = maquina.tipo;
+            existente.velocidade = maquina.velocidade;
+            existente.harddisk = maquina.harddisk;
+            existente.placa_Rede = maquina.placa_Rede;
+            existente.memoria_Ram = maquina.memoria_Ram;
+            existente.id_usuario = maquina.id_usuario;
 
             await _context.SaveChangesAsync();
             
@@ -58,10 +58,10 @@ namespace Exercicios_ASPNET_Banco.Controller
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var existente = await _context.Softwares.FindAsync(id);
+            var existente = await _context.Maquinas.FindAsync(id);
             if (existente == null) return NotFound();
 
-            _context.Softwares.Remove(existente);
+            _context.Maquinas.Remove(existente);
             await _context.SaveChangesAsync();
             return NoContent(); // retorna um status 204
         }

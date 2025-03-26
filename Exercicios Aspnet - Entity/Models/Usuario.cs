@@ -10,11 +10,11 @@ namespace Exercicios_ASPNET_Banco.Models
     [Table("usuarios")]
     public class Usuario
     {
-        [Column("id")]
+        [Column("id_usuario")]
         public int id {get; set;}
-        [Column("senha")]
+        [Column("password")]
         public string senha {get; set;}
-        [Column("nome")]
+        [Column("nome_usuario")]
         public string nome {get; set;}
         [Column("ramal")]
         public int ramal {get; set;}
