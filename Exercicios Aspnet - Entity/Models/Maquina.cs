@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Exercicios_ASPNET_Banco.Models
+namespace Exemplo5ComBancoEntity.Models
 {
     [Table("maquina")]
     public class Maquina
     {
-        [Column("id")]
-        public int id {get; set;}
+        [Key] // Define a chave primária
+        [Column("id_maquina")]
+        public int Id { get; set; }
+
         [Column("tipo")]
-        public string tipo {get; set;}
+        public string Tipo { get; set; }
+
         [Column("velocidade")]
-        public int velocidade {get; set;}
+        public int Velocidade { get; set; }
+
         [Column("harddisk")]
-        public int harddisk {get; set;}
-        [Column("placa_Rede")]
-        public int placa_Rede {get; set;}
-        [Column("memoria_Ram")]
-        public int memoria_Ram {get; set;}
-        [Column("id_usuario")]
-        public int id_usuario {get; set;}
-        [ForeignKey("id_usuario")]
-        [Column("id_usuario")]
-        public Usuario usuario { get; set; }
+        public int HardDisk { get; set; }
+
+        [Column("placa_rede")]
+        public int PlacaRede { get; set; }
+
+        [Column("memoria_ram")]
+        public int MemoriaRam { get; set; }
+
+        [ForeignKey("Usuario")]
+        [Column("fk_usuario")]
+        public int FkUsuario { get; set; }
     }
 }

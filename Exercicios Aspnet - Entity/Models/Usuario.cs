@@ -3,22 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using System.ComponentModel.DataAnnotations;
+
+
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Exercicios_ASPNET_Banco.Models
+
+namespace Exemplo5ComBancoEntity.Models
 {
     [Table("usuarios")]
     public class Usuario
     {
+        [Key]
         [Column("id_usuario")]
-        public int id {get; set;}
+        public int Id { get; set; }
+
         [Column("password")]
-        public string senha {get; set;}
+        public string Password { get; set; }
+
         [Column("nome_usuario")]
-        public string nome {get; set;}
+        public string Nome { get; set; }
+
         [Column("ramal")]
-        public int ramal {get; set;}
+        public int Ramal { get; set; }
+
         [Column("especialidade")]
-        public string especialidade {get; set;}
+        public string Especialidade { get; set; }
+
+        // public List<Maquina> Maquinas { get; set; }
     }
 }

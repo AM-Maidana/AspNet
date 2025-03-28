@@ -1,20 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Exemplo5ComBancoEntity.database;
 
-using Exercicios_ASPNET_Banco.database;
-
-namespace Exercicios_ASPNET_Banco
-
+namespace Exemplo5ComBancoEntity
 {
     public class Executar
     {
@@ -22,39 +13,45 @@ namespace Exercicios_ASPNET_Banco
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Carregando a string de conexão
-            var connectionStrings = builder.Configuration.GetConnectionString("PostgresConnection");
-            // Se a string for nula, estoura exceção
-            if (string.IsNullOrEmpty(connectionStrings))
-            {
-                throw new InvalidOperationException("String de conexão não foi encontrada.");
-            }
+            // Carrega string de conexão do appsettings.json
+            // var connectionString = builder.Configuration.GetConnectionString("PostgresConnection");
 
-            // Registrando o DbContext com Npgsql
+            // Registra o DbContext com o PostgreSQL
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(connectionStrings));
+             options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
 
+
+            // Adiciona suporte a controllers e Swagger
             builder.Services.AddControllers();
-            
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Swagger
+            // Habilita Swagger (ambiente dev)
+            // if (app.Environment.IsDevelopment())
+            // {
             app.UseSwagger();
             app.UseSwaggerUI();
+            // }
 
+            // Habilita HTTPS
             app.UseHttpsRedirection();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            // Habilita arquivos estáticos da pasta wwwroot (html, css, js)
+            app.UseDefaultFiles(); // Procura por index.html
+            app.UseStaticFiles();  // Permite servir arquivos de wwwroot
 
-            
+            // Habilita autenticação/autorização (mesmo que ainda não usada)
             app.UseAuthorization();
+
+            // Mapeia os endpoints da API
             app.MapControllers();
+
+            // Roda a aplicação
             app.Run();
 
+            // link para o swagger: http://localhost:5000/swagger/index.html
         }
     }
 }
