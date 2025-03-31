@@ -20,13 +20,13 @@ namespace Exemplo5ComBancoEntity.Models
         public string produto { get; set; }
 
         [Column("harddisk")]
-        public int Harddisk { get; set; }
+        public int harddisk { get; set; }
 
         [Column("memoria_ram")]
         public int MemoriaRam { get; set; }
 
-        [ForeignKey("Maquina")] // Define a chave estrangeira
+        [ForeignKey("maquina")] // Define a chave estrangeira
         [Column("fk_maquina")]
-        public int FkMaquina { get; set; }
+        public int fk_maquina { get; set; }
     }
 }

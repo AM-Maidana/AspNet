@@ -45,9 +45,9 @@ namespace Exemplo5ComBancoEntity.Controllers
             if (existente == null) return NotFound();
 
             existente.produto = software.produto;
-            existente.Harddisk = software.Harddisk;
+            existente.harddisk = software.harddisk;
             existente.MemoriaRam = software.MemoriaRam;
-            existente.FkMaquina = software.FkMaquina;
+            existente.fk_maquina = software.fk_maquina;
 
             await _context.SaveChangesAsync();
             return existente;

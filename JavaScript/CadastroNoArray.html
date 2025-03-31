@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+    <style>
+        body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        }
+        .container {
+            background: linear-gradient(135deg, #f3fdda, #b2f6f8);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+            align-items: center;
+            border: 2px solid #ffc671;
+            width: 50%;
+            
+        }
+
+        .container2{
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            margin-left: 1rem;
+            width: 100%;
+        }
+        h1, h2{
+            color: #033133;
+        }
+        ul {
+            color: #033133;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="formulario">
+            <label><h1>Digite um número: </h1></label>
+            <input type="number" id="numero" placeholder="Digite um número" required>
+            <button type="submit" style="background-color: #5f9ea0; color: rgb(255, 255, 255); padding: 5px 10px; border-color: #ffc671;">Cadastrar</button>
+        </form>
+    <div class="container2">
+        <h2>Listagem dos números cadastrados:</h2>
+        <ul id="listaNumeros"></ul>
+    </div>
+    </div>
+    
+    <script>
+        const array = [];
+
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const inputNumero = document.getElementById("numero");
+            const valor = Number(inputNumero.value);
+
+            if (!isNaN(valor)) { 
+                array.push(valor);
+                atualizarLista();
+                inputNumero.value = ""; 
+            }
+        });
+
+        function atualizarLista() {
+            const lista = document.getElementById("listaNumeros");
+            lista.innerHTML = "";
+            array.forEach(num => {
+                const item = document.createElement("li");
+                item.textContent = num;
+                lista.appendChild(item);
+            });
+        }
+    </script>
+</body>
+</html>

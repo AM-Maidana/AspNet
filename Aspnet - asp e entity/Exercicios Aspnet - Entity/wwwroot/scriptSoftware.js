@@ -14,9 +14,9 @@ function carregarSoftwares() {
                     <tr>
                         <td>${software.id}</td>
                         <td>${software.produto}</td>
-                        <td>${software.hardDisk}</td>
+                        <td>${software.harddisk}</td>
                         <td>${software.memoriaRam}</td>
-                        <td>${software.fkMaquina}</td>
+                        <td>${software.fk_maquina}</td>
                         <td>
                             <button class="edit" onclick="editarSoftware(${software.id})">Editar</button>
                             <button class="delete" onclick='deletarSoftware(${software.id})'>Deletar</button>
@@ -34,9 +34,9 @@ function salvarSoftware(event) {
     const software = {
         id: parseInt(id || 0), 
         produto: document.getElementById("produto").value,
-        Harddisk: document.getElementById("Harddisk").value,
+        harddisk: document.getElementById("harddisk").value,
         memoriaRam: document.getElementById("memoriaRam").value,
-        fkMaquina: document.getElementById("fkMaquina").value
+        fk_maquina: document.getElementById("fk_maquina").value
     };
 
     fetch(`${API}/${software.id}`)
@@ -77,9 +77,9 @@ function editarSoftware(id) {
         .then(software => { 
             document.getElementById("id").value = software.id; 
             document.getElementById("produto").value = software.produto; 
-            document.getElementById("hardDisk").value = software.hardDisk; 
+            document.getElementById("harddisk").value = software.harddisk; 
             document.getElementById("memoriaRam").value = software.memoriaRam;
-            document.getElementById("fkMaquina").value = software.fkMaquina;
+            document.getElementById("fk_maquina").value = software.fk_maquina;
         });
 }
 
