@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testes de captcha</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(245, 245, 243);
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+            align-items: center;
+            width: 400px; /* Largura fixa para o container */
+            max-width: 90%; /* Limita a largura em telas pequenas */
+            border-radius: 10px;
+            padding: 20px;
+        }
+        #testeFom{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .group-radio {
+            display: block;
+            padding: 10px;
+            position: relative;
+        }
+
+        .group-radio input[type='radio'] {
+            display: none;
+        }
+
+        .group-radio input[type='radio']:checked+label::before {
+            color: #108800;
+            content: "✓";
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 10px;
+        }
+
+        .group-radio input[type='radio']:checked~.group-radio-message {
+            opacity: 1;
+        }
+
+        .group-radio label,
+        .group-radio label::before {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .group-radio label::before {
+            border-radius: 5px;
+            border: 1px solid #333;
+            content: '';
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Testando captchas & front-end</h2>
+        <form id="testeFom">
+            <input type="email" id="email" placeholder="Digite seu email" required>
+            <input type="password" id="password" placeholder="Digite sua senha" class="mb-3" required>
+            <button type="submit" style="background-color: #108800; color: white; padding: 5px 10px;">Acessar</button>
+            <div class="group-radio">
+                <input type="radio" name="radio" id="checado">
+                <label for="checado">Verifique aqui!</label>
+            </div>
+        </form>
+
+    </div>
+    <script>
+        function gerarConta() {
+            let num1 = Math.floor(Math.random() * 100);
+            let num2 = Math.floor(Math.random() * 100);
+            let num3 = Math.floor(Math.random() * 100);
+            let resultado = num1 + num2 + num3;
+
+            // Pergunta ao usuário a resposta
+            let respostaUsuario = prompt(`Quanto é ${num1} + ${num2} + ${num3}?`);
+
+            if (respostaUsuario === null) {
+                alert("Você cancelou a verificação!");
+                return;
+            }
+
+            if (parseInt(respostaUsuario) == resultado) {
+                alert("Resposta correta! Você não é um robô.");
+            } else {
+                alert("Resposta errada! Tente novamente.");
+                gerarConta(); // Pergunta novamente
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('checado').addEventListener('change', function () {
+                if (this.checked) {
+                    gerarConta();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

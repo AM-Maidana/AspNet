@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login com reCaptcha</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(245, 245, 243);
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+            align-items: center;
+            width: 400px; /* Largura fixa para o container */
+            max-width: 90%; /* Limita a largura em telas pequenas */
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: black;
+            padding: 10px 20px;
+            margin: 10px 0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .g-recaptcha {
+            margin: 10px 0;
+        }
+
+        #resposta {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login de verificação reCaptcha</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Digite seu email" required>
+            <input type="password" id="password" placeholder="Digite sua senha" required>
+
+            <!-- Aqui entra o reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6Le96QcrAAAAAEPrUGrZ7BysMKM0hDj9wgT0Ob5V"></div>
+
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+    </div>
+    <div id="resposta"></div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const recaptchaResponse = grecaptcha.getResponse();
+
+            if (recaptchaResponse.length === 0) {
+                alert('Por favor, verifique se você não é um robô.');
+                return;
+            }
+
+            // Simulando login aprovado
+            const usuario = {
+                email: email,
+                status: 'Aprovado'
+            };
+
+            // Gerar um JSON e baixar como arquivo
+            const blob = new Blob([JSON.stringify(usuario, null, 2)], {
+                type: 'application/json' // Corrigido o tipo MIME
+            });
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'login.json';
+            link.click();
+        });
+    </script>
+</body>
+
+</html>
