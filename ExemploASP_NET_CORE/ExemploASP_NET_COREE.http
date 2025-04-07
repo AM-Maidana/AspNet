@@ -1,0 +1,26 @@
+@ExemploASP_NET_COREE_HostAddress = http://localhost:5067
+
+GET http://localhost:5067/Usuario
+Accept: application/json
+
+###
+# TESTAR O POST
+POST http://localhost:5067/Usuario
+Content-Type: application/json
+
+{
+    "Nome": "Amanda",
+    "Email": "amandinha@gmail.com"
+}
+###
+#Testar o Put
+PUT http://localhost:5067/Usuario/1
+Content-Type: application/json
+
+{
+    "Nome": "Amandas",
+    "Email": "amandinha@gmail.com"
+}
+###
+#Delete
+DELETE http://localhost:5067/Usuario/1

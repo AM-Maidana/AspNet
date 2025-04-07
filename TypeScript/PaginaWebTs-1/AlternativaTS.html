@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TypeScript no Navegador</title>
+
+  <!-- TypeScript Compiler -->
+  <script src="https://unpkg.com/typescript@latest/lib/typescript.js"></script>
+</head>
+
+<body>
+  <h1>TS direto no navegador</h1>
+  <input type="text" id="nome" placeholder="Digite seu nome" />
+  <button id="btn">Clique aqui</button>
+
+  <!-- Aqui está o código TypeScript -->
+  <script id="ts-code" type="text/typescript">
+    const input = document.getElementById("nome");
+    const button = document.getElementById("btn");
+
+    button?.addEventListener("click", () => {
+      if (input instanceof HTMLInputElement) {
+        const nome = input.value.trim();
+
+        if (nome === "") {
+          alert("Por favor, digite seu nome.");
+        } else {
+          alert(`Olá ${nome}, tudo bem?`);
+        }
+      }
+    });
+  </script>
+
+  <!-- Transpila e executa o código TS -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const tsScript = document.getElementById("ts-code");
+      if (tsScript) {
+        const tsCode = tsScript.textContent;
+        const jsCode = ts.transpile(tsCode);
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.textContent = jsCode;
+        document.body.appendChild(script);
+      }
+    });
+  </script>
+</body>
+</html>

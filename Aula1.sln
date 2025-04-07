@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo_3_Endpoint_ASPNET",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercicios Aspnet", "Exercicios Aspnet\Exercicios Aspnet.csproj", "{755F9CF5-1AAE-4508-9E4A-C7A6FF456375}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExemploASP_NET_CORE", "ExemploASP_NET_CORE\ExemploASP_NET_CORE.csproj", "{9487060E-4B50-4195-992D-EF14184CADE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExemploASP_NET_COREE", "ExemploASP_NET_COREE\ExemploASP_NET_COREE.csproj", "{AA9D6841-E43C-4B1F-9334-F96657F06B6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{755F9CF5-1AAE-4508-9E4A-C7A6FF456375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{755F9CF5-1AAE-4508-9E4A-C7A6FF456375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{755F9CF5-1AAE-4508-9E4A-C7A6FF456375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9487060E-4B50-4195-992D-EF14184CADE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9487060E-4B50-4195-992D-EF14184CADE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9487060E-4B50-4195-992D-EF14184CADE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9487060E-4B50-4195-992D-EF14184CADE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA9D6841-E43C-4B1F-9334-F96657F06B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA9D6841-E43C-4B1F-9334-F96657F06B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA9D6841-E43C-4B1F-9334-F96657F06B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA9D6841-E43C-4B1F-9334-F96657F06B6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
