@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastar o quadrado</title>
+    <style>
+        #draggable {
+            width: 300px;
+            height: 300px;
+            background-color: rgb(137, 85, 204);
+            cursor: move; /* Muda o cursor para indicar que o elemento é arrastável */
+            position: absolute; /* Necessário para poder alterar left/top */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="draggable"></div> <!-- Agora o quadrado existe -->
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const draggable = document.getElementById('draggable'); // Agora pegamos o elemento
+
+        draggable.addEventListener('mousedown', (event) => {
+            let shiftX = event.clientX - draggable.getBoundingClientRect().left;
+            let shiftY = event.clientY - draggable.getBoundingClientRect().top;
+
+            draggable.style.zIndex = 1000;
+
+            function moveAt(pageX, pageY) {
+                draggable.style.left = pageX - shiftX + 'px';
+                draggable.style.top = pageY - shiftY + 'px';
+            }
+
+            moveAt(event.pageX, event.pageY);
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            draggable.addEventListener('mouseup', () => {
+                document.removeEventListener('mousemove', onMouseMove);
+            });
+        });
+
+        draggable.ondragstart = () => {
+            return false; // Impede o comportamento padrão de arrastar imagens/texto
+        };
+    });
+    </script>
+
+</body>
+</html>

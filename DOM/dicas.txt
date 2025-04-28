@@ -1,0 +1,24 @@
+Dica de ouro:
+Quando usar querySelector, sempre:
+
+# para id
+
+. para class
+
+nada para tag
+
+Exemplos:
+
+• document.querySelector("#meuId") // id
+• document.querySelector(".minhaClasse") // class
+• document.querySelector("div") // tag
+=================================================
+getElementById = Seleciona um elemento pelo id. Retorna um único elemento. Exemplo: getElementById("meuId")
+
+querySelector = Seleciona o primeiro elemento que bater com um seletor CSS. Retorna um único elemento. Exemplo: querySelector("#meuId"), querySelector(".minhaClasse"), querySelector("div")
+
+querySelectorAll = Seleciona todos os elementos que batem com o seletor CSS. Retorna uma NodeList (lista de elementos). Exemplo: querySelectorAll(".minhaClasse")
+
+getElementsByClassName = Seleciona todos os elementos de uma classe. Retorna uma HTMLCollection. Exemplo: getElementsByClassName("minhaClasse")
+
+getElementsByTagName = Seleciona todos os elementos por tag. Retorna uma HTMLCollection. Exemplo: getElementsByTagName("div")
