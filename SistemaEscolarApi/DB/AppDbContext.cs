@@ -21,8 +21,8 @@ namespace SistemaEscolarApi.DB
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DisciplinasAlunosCurso>()
-                .HasKey(dc => new {dc.AlunoId, dc.DisciplinaId, dc.CursoId});            
+            modelBuilder.Entity<DisciplinaAlunoCurso>()
+                .HasKey(dc => new {dc.AlunoID, dc.DisciplinaID, dc.CursoID});            
 
         }
     }

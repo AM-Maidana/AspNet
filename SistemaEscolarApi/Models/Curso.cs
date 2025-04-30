@@ -7,7 +7,7 @@ namespace SistemaEscolarApi.Models
 {
     public class Curso
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Descricao { get; set; }
         
         public ICollection<Aluno> Alunos { get; set; } = [];
