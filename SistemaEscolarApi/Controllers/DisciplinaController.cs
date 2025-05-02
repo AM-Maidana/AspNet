@@ -31,7 +31,12 @@ namespace SistemaEscolarApi.Controllers
         {
             var disciplinas = await _context.Disciplinas
                 .Include(d => d.Curso) // Inclui a entidade Curso relacionada
-                .Select(disciplinas => new DisciplinaDTO { Descricao = disciplinas.Descricao, Curso = disciplinas.Curso.Descricao }) // Seleciona as disciplinas e projeta em um DTO
+                .Select(disciplinas => new DisciplinaDTO 
+                { 
+                    ID = disciplinas.ID, // Seleciona o ID da disciplina
+                    Descricao = disciplinas.Descricao, 
+                    Curso = disciplinas.Curso.Descricao 
+                }) // Seleciona as disciplinas e projeta em um DTO
                 .ToListAsync(); // Converte para uma lista assíncrona
 
             return Ok(disciplinas); // Retorna a lista de disciplinas com status 200 OK
@@ -61,7 +66,7 @@ namespace SistemaEscolarApi.Controllers
             disciplina.Descricao = disciplinaDTO.Descricao; // Aqui vai atualizar o ALuno no models e no DTO
             _context.Disciplinas.Update(disciplina); // Atualiza a disciplina no contexto
             await _context.SaveChangesAsync(); // Salva as alterações no banco de dados
-            return NoContent(); // Retorna status 204 No Content
+            return Ok(new {mensagem = "Disciplina alterada com sucesso"}); // Retorna status 204 No Content
 
         }
 
@@ -75,6 +80,26 @@ namespace SistemaEscolarApi.Controllers
             _context.Disciplinas.Remove(disciplina); // Remove a disciplina do contexto
             await _context.SaveChangesAsync(); // Salva as alterações no banco de dados
             return NoContent(); // Retorna status 204 No Content
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DisciplinaDTO>> GetById(int id)
+        {
+            var disciplina = await _context.Disciplinas 
+           .Where(d => d.ID == id)
+           .Select(d => new DisciplinaDTO 
+            {
+                ID = d.ID,
+                Descricao = d.Descricao,
+                Curso = d.Curso.Descricao
+            })
+            .FirstOrDefaultAsync(); // Busca a disciplina pelo ID
+
+            if (disciplina == null)
+            {
+                return NotFound("Disciplina não encontrada"); // Se não encontrar, retorna 404
+            }
+            return Ok(disciplina); // Retorna a disciplina encontrada com status 200 OK
         }
     }
 }

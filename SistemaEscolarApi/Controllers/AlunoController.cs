@@ -31,6 +31,7 @@ namespace SistemaEscolarApi.Controllers
                 .Include(a => a.Curso)
                 .Select(a => new AlunoDTO
                 {
+                    ID = a.ID,
                     Nome = a.Nome,
                     Curso = a.Curso.Descricao
                 })
@@ -50,7 +51,7 @@ namespace SistemaEscolarApi.Controllers
             _context.Alunos.Add(aluno);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(new{mensagem = "Aluno cadastrado com sucesso"});
         }
 
         [HttpPut("{id}")]
@@ -80,6 +81,30 @@ namespace SistemaEscolarApi.Controllers
             await _context.SaveChangesAsync();
 
             return Ok();
+        }
+
+        [HttpGet("{id}")] // Metodo de busca de aluno por id
+        public async Task<ActionResult<AlunoDTO>> Get(int id)
+        {
+            var aluno = await _context.Alunos
+                .Include(a => a.Curso)
+                .FirstOrDefaultAsync(a => a.ID == id);
+                
+                /*FirstOrDefaultAsync é metodo assincrono que retrna o primeiro elemento que atende a condição atribuida a ele, ou valor padrão se nenhum for encontrado que é 500*/
+                /*Include é o metodo que inclui entidades relacionadas na consulta, permitinfo carregar */
+
+                if(aluno == null)
+                {
+                    return NotFound("Aluno não encontrado");
+                }
+
+                var alunoDTO = new AlunoDTO
+                {
+                    ID = aluno.ID,
+                    Nome = aluno.Nome,
+                    Curso = aluno.Curso.Descricao
+                };
+                return Ok(alunoDTO);
         }
     }
 }

@@ -22,25 +22,28 @@ namespace SistemaEscolarApi.Controllers
             _context = context; // Inicializa o contexto do banco de dados
         }
 
-        [HttpGet] // Método para obter todas as disciplinas
-        public async Task<ActionResult<IEnumerable<DisciplinaAlunoCursoDTO>>> Get()
-        // async para deixar a opreação assíncrona e não bloquear o thread
-        // Task<ActionResult<IEnumerable<DisciplinaAlunoCursoDTO>>> para retornar uma lista de DTOs de disciplinas
-        // IEnumerable<DisciplinaAlunoCursoDTO> é uma interface que representa uma coleção de objetos do tipo DisciplinaAlunoCursoDTO
-        // ActionResult é uma classe base para resultados de ação em controladores ASP.NET
+      [HttpGet]
+public async Task<ActionResult<IEnumerable<DisciplinaAlunoCursoDTO>>> Get()
+{
+    var registros = await _context.DisciplinasAlunosCursos
+        .Include(d => d.AlunoNome)
+        .Include(d => d.Curso)
+        .Include(d => d.Disciplina)
+        .Select(d => new DisciplinaAlunoCursoDTO
         {
-            var regitros = await _context.DisciplinasAlunosCursos
-              .Select(d => new DisciplinaAlunoCursoDTO
-              {
-                  AlunoID = d.AlunoID,
-                  CursoID = d.CursoID,
-                  DisciplinaID = d.DisciplinaID,
-              })
-              .ToListAsync(); // Converte para uma lista assíncrona
+            ID = d.AlunoID + d.CursoID + d.DisciplinaID,
+            AlunoID = d.AlunoID,
+            AlunoNome = d.AlunoNome.Nome, // Supondo que a classe Aluno tenha a propriedade Nome
+            CursoID = d.CursoID,
+            CursoNome = d.Curso.Descricao, // Supondo que a classe Curso tenha Descricao
+            DisciplinaID = d.DisciplinaID,
+            DisciplinaNome = d.Disciplina.Descricao // Supondo que a classe Disciplina tenha Descricao
+        })
+        .ToListAsync();
 
+    return Ok(registros);
+}
 
-            return Ok(regitros); // Retorna a lista de disciplinas com status 200 OK
-        }
 
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] DisciplinaAlunoCursoDTO disciplinaAlunoCursoDTO)
@@ -89,6 +92,34 @@ namespace SistemaEscolarApi.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DisciplinaAlunoCursoDTO>> GetById(int id)
+        {
+            var relacoes = await _context.DisciplinasAlunosCursos
+                .Include(d => d.AlunoNome)
+                .Include(d => d.Curso)
+                .Include(d => d.Disciplina)
+                .ToListAsync();
+
+            var relacao = relacoes.FirstOrDefault(r => r.AlunoID + r.CursoID + r.DisciplinaID == id);
+            if (relacao == null)
+            {
+                return NotFound("relação nao enontrada");
+            }
+            
+            var dto = new DisciplinaAlunoCursoDTO
+            {
+                ID = relacao.AlunoID + relacao.CursoID + relacao.DisciplinaID,
+                AlunoID = relacao.AlunoID,
+                AlunoNome = relacao.AlunoNome.Nome, // Supondo que a classe Aluno tenha a propriedade Nome
+                CursoID = relacao.CursoID,
+                CursoNome = relacao.Curso.Descricao, // Supondo que a classe Curso tenha Descricao
+                DisciplinaID = relacao.DisciplinaID,
+                DisciplinaNome = relacao.Disciplina.Descricao // Supondo que a classe Disciplina tenha Descricao
+            };
+
+            return Ok(dto);
         }
     }
 }

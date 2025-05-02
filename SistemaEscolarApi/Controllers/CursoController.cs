@@ -37,7 +37,7 @@ namespace SistemaEscolarApi.Controllers
             _context.Cursos.Add(curso);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(new { mensagem = "Curso cadastrado com sucesso" });
         }
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] CursoDTO cursoDTO)
@@ -62,5 +62,23 @@ namespace SistemaEscolarApi.Controllers
 
             return Ok();
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CursoDTO>> Get(int id)
+        {
+            var curso = await _context.Cursos.FindAsync(id);
+            if (curso == null)
+            {
+                return NotFound("Curso não encontrado");
+            }
+            
+            var cursoDTO = new CursoDTO 
+            {
+                ID = curso.ID,
+                Descricao = curso.Descricao
+            };
+
+            return Ok(cursoDTO); 
+        } 
     }
 }
