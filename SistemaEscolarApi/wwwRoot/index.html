@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar - Maidana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <style>
+        .hero-section {
+            background-image: url('./assets/img/hero.jpg');
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .custom-navbar {
+            background-color: rgb(20, 68, 37);
+        }
+
+        .textNav {
+            font-family: 'Oswald', sans-serif;
+            font-size: 30px;
+            color: rgb(217, 245, 240);
+        }
+
+        .navbar {
+            box-shadow: rgb(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 30px;
+        }
+
+        .card {
+            border: 2px solid #B5D984;
+            /* Cor de borda verde-claro para destacar o card */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            overflow: hidden;
+            /* Impede que o conteúdo ultrapasse os limites do card */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Sombra suave para dar profundidade */
+        }
+
+        .card-img {
+            height: 100px;
+            width: 100%;
+        }
+
+        .card-body {
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #144425;
+
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .btnSection {
+            background-color: #144425;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btnSection:hover {
+            background-color: #46953D;
+            color: white;
+        }
+
+        .btnSection2 {
+            background-color: #144425;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 50px;
+            width: fit-content;
+            /* Ajusta o tamanho do botão conforme o conteúdo */
+        }
+
+        .img-fluid {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: rgb(217, 245, 240);">
+                <i class="fa-solid fa-school me-2"></i><i class="textNav">Colegio Maidana</i><br>
+                <i class="textNav">Sistema Escolar</i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" style="color: rgb(217, 245, 240);">
+                            <i class="fas fa-home me-1"></i><i class="textNav">Home</i>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-4">
+                        <a class="nav-link" href="login.html" style="color: rgb(217, 245, 240);">
+                            <i class="fas fa-sign-in-alt me-2"></i><i class="textNav">Login</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Bem vindo ao ensino Maidana</h1>
+            <p clas="lead">Sistema de gestão Educacional</p>
+        </div>
+    </header>
+
+    <section class="container py-5">
+        <h2>Nossos modulos</h2>
+        <div class="row mt-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="./assets/svg/student.svg" alt="alunos" class="card-img">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Gestão de alunos</h5>
+                        <p class="card-text">Gerenciamento de Alunos</p>
+                        <a href="alunos.html" class="btnSection">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="./assets/svg/curse.svg" alt="professores" class="card-img">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Gestão de cursos</h5>
+                        <p class="card-text">Gerenciamento de cursos</p>
+                        <a href="cursos.html" class="btnSection">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="./assets/svg/discipline.svg" alt="professores" class="card-img">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Gestão de disciplinas</h5>
+                        <p class="card-text">Gerenciamento de disciplinas</p>
+                        <a href="disciplinas.html" class="btnSection">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="./assets/svg/teacher.svg" alt="professores" class="card-img">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Gestão de professores</h5>
+                        <p class="card-text">Gerenciamento de professores</p>
+                        <a href="professores.html" class="btnSection">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--#######################-->
+    <section class="container py-5">
+        <div class="container">
+            <div class="row align-itens-center">
+                <div class="">
+                    <h2>Sistema Completo de gestão Educacional</h2>
+                    <p class="lead">Oferecemos todas as ferramentas nencessárias para a administração eficiente de sua
+                        instituição de ensino.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-square-check me-2 text-success"></i> Interface intuitiva<br>
+                            <i class="fas fa-square-check me-2 text-success"></i>Relatórios completos e
+                            personalizaveis<br>
+                            <i class="fas fa-square-check me-2 text-success"></i> Acesso seguro com multiplos
+                            perfils<br>
+                            <i class="fas fa-square-check me-2 text-success"></i> Integração com todos os modulos<br>
+                        </li>
+                    </ul>
+                    <button id="saiba-mais" class="btnSection2">Saiba Mais!</button>
+                </div>
+            </div>
+            <div class="">
+                <img src="./assets/img/sistemaEdu.jpg" alt="Sistema Escolar" class="img-fluid">
+            </div>
+        </div>
+    </section>
+<!---############################-->
+    <footer class="footer" style="background-color: #144425; color: #B5D984; padding: 30px 0;">
+        <div class="container text-center">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="login.html" class="text-white" style="color: #B5D984;">Login</a>
+                </li>
+                <li>
+                    <a href="alunos.html" class="text-white" style="color: #B5D984;">Alunos</a>
+                </li>
+                <li>
+                    <a href="cursos.html" class="text-white" style="color: #B5D984;">Cursos</a>
+                </li>
+            </ul>
+            <p>&copy; 2023 Sistema Escolar - Maidana. Todos os direitos reservados.</p>
+            <p>Desenvolvido por <a href="https://github.com/AM-Maidana" style="color: #B5D984;">Amanda Maidana</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
