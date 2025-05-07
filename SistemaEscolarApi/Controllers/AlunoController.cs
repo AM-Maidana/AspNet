@@ -26,11 +26,12 @@ namespace SistemaEscolarApi.Controllers
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AlunoDTO>>> GetAlunos()
-        {
+        { 
             var alunos = await _context.Alunos
                 .Include(a => a.Curso)
                 .Select(a => new AlunoDTO
                 {
+                    
                     ID = a.ID,
                     Nome = a.Nome,
                     Curso = a.Curso.Descricao
@@ -44,6 +45,7 @@ namespace SistemaEscolarApi.Controllers
 
         public async Task<ActionResult> Post([FromBody] AlunoDTO alunoDTO)
         {
+
             var Curso = await _context.Cursos.FirstOrDefaultAsync(c => c.Descricao == alunoDTO.Curso);
             if (Curso == null) return BadRequest("Curso não encontrado");
 
