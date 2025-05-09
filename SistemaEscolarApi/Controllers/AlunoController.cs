@@ -25,13 +25,13 @@ namespace SistemaEscolarApi.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlunoDTO>>> GetAlunos()
-        { 
+        public async Task<ActionResult<IEnumerable<AlunoReadDTO>>> GetAlunos()
+        {
             var alunos = await _context.Alunos
                 .Include(a => a.Curso)
-                .Select(a => new AlunoDTO
+                .Select(a => new AlunoReadDTO
                 {
-                    
+
                     ID = a.ID,
                     Nome = a.Nome,
                     Curso = a.Curso.Descricao
@@ -42,22 +42,22 @@ namespace SistemaEscolarApi.Controllers
         }
 
         [HttpPost]
-
-        public async Task<ActionResult> Post([FromBody] AlunoDTO alunoDTO)
+        public async Task<ActionResult> Post([FromBody] AlunoCreateDTO alunoCreateDTO)
         {
+            var curso = await _context.Cursos.FindAsync(alunoCreateDTO.CursoId);
+            if (curso == null) return BadRequest(ModelState);
 
-            var Curso = await _context.Cursos.FirstOrDefaultAsync(c => c.Descricao == alunoDTO.Curso);
-            if (Curso == null) return BadRequest("Curso não encontrado");
 
-            var aluno = new Aluno { Nome = alunoDTO.Nome, CursoId = Curso.ID };
+            var aluno = new Aluno { Nome = alunoCreateDTO.Nome, CursoId = curso.ID };
             _context.Alunos.Add(aluno);
             await _context.SaveChangesAsync();
 
-            return Ok(new{mensagem = "Aluno cadastrado com sucesso"});
+            return Ok(new { mensagem = "Aluno cadastrado com sucesso" });
         }
 
+
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] AlunoDTO alunoDTO)
+        public async Task<ActionResult> Put(int id, [FromBody] AlunoCreateDTO alunoDTO)
         {
             var aluno = await _context.Alunos.FindAsync(id);
             if (aluno == null) return NotFound("Aluno não encontrado");
@@ -85,28 +85,25 @@ namespace SistemaEscolarApi.Controllers
             return Ok();
         }
 
-        [HttpGet("{id}")] // Metodo de busca de aluno por id
-        public async Task<ActionResult<AlunoDTO>> Get(int id)
+        [HttpGet("buscarpornome/{nome}")]
+        public async Task<ActionResult<AlunoReadDTO>> BuscarPorNome(string nome)
         {
             var aluno = await _context.Alunos
                 .Include(a => a.Curso)
-                .FirstOrDefaultAsync(a => a.ID == id);
-                
-                /*FirstOrDefaultAsync é metodo assincrono que retrna o primeiro elemento que atende a condição atribuida a ele, ou valor padrão se nenhum for encontrado que é 500*/
-                /*Include é o metodo que inclui entidades relacionadas na consulta, permitinfo carregar */
+                .FirstOrDefaultAsync(a => a.Nome == nome);
 
-                if(aluno == null)
-                {
-                    return NotFound("Aluno não encontrado");
-                }
+            if (aluno == null)
+                return NotFound("Aluno não encontrado");
 
-                var alunoDTO = new AlunoDTO
-                {
-                    ID = aluno.ID,
-                    Nome = aluno.Nome,
-                    Curso = aluno.Curso.Descricao
-                };
-                return Ok(alunoDTO);
+            var alunoDTO = new AlunoReadDTO
+            {
+                ID = aluno.ID,
+                Nome = aluno.Nome,
+                Curso = aluno.Curso.Descricao
+            };
+
+            return Ok(alunoDTO);
         }
+
     }
 }

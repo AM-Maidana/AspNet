@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de alunos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
@@ -46,119 +47,141 @@
 </head>
 
 <body>
+    <!-- ? #################################################### NAVBAR  ####################################################-->
+
     <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
         <div class="container">
             <a class="navbar-brand" href="#" style="color: rgb(217, 245, 240);">
                 <i class="fa-solid fa-school me-2"></i><i class="textNav">Colegio Maidana</i><br>
                 <i class="textNav">Sistema Escolar</i>
             </a>
+
+            <!-- Botão para colapsar em telas pequenas -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color: rgb(217, 245, 240);">
-                            <i class="fa-solid fa-door-open me-1"></i><i class="textNav">Sair</i>
-                        </a>
-                    </li>
+
+            <!-- Dropdown alinhado à direita -->
+            <div class="dropdown ms-auto">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="index.html">Início</a></li>
+                    <li><a class="dropdown-item" href="Disciplina.html">Disciplinas</a></li>
+                    <li><a class="dropdown-item" href="Curso.html">Cursos</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-<main>
-    <!--GERENCIAMENTO DE ALUNOS-->
-    <div class="container mt-5">
-        <h3 class="text-start">Gerenciamento de alunos, por favor selecione uma opção:</h3>
 
-        <div class="d-flex justify-content-start gap-3 mt-4 flex-wrap">
-            <button class="btn btn-info" id="btnCadastrarAluno" onclick="mostrarSecao('cadastro-Aluno')">
-                <i class="fa-solid fa-user-plus me-2"></i>Cadastrar Aluno
-            </button>
-            <button class="btn btn-warning" id="btnBuscarAluno" onclick="mostrarSecao('buscar-Aluno')">
-                <i class="fa-solid fa-user-pen me-2"></i>Buscar Aluno
-            </button>
-            <button class="btn btn-dark" id="btnVisualizarAluno" onclick="mostrarSecao('listar-Aluno')">
-                <i class="fa-solid fa-list me-2"></i>Visualizar Alunos
-            </button>
-        </div>
-    </div>
-
-    <!-- SECÇÇÃO PARA CADASTRO DE ALUNOS! -->
-    <section id="cadastro-Aluno" class="container mt-5">
-        <h3 class="text-start">Cadastro de novo Aluno</h3>
-        <form class="mt-4" id="formAluno" method="POST">
-            <input type="hidden" id="idCursoHidden" name="idCurso">
-
-            <label for="nome" class="form-label">Nome do Aluno:</label>
-            <input type="text" class="form-control" id="nome" placeholder="Digite o nome do aluno" required>
-
-            <label for="cursoId" class="form-label mt-3">Selecione o Curso:</label>
-            <select class="form-select" id="cursoId" name="CursoId" required>
-                <option value="" disabled selected>--</option>
-                <option value="1">Engenharia</option>
-                <option value="2">Direito</option>
-                <option value="3">Medicina</option>
-            </select>
-
-            <button type="submit" class="btn btn-success mt-4">
-                <i class=""></i>Cadastrar Aluno
-            </button>
-            <button type="reset" class="btn btn-danger mt-4 ms-2"> <!--FAZER UM BOTÃO PARA LIMPAR OS CAMPOS-->
-                <i class=""></i>Cancelar
-        </form>
-    </section>
-
-    <!--EDITAR O ALUNO -->
-    <section id="buscar-Aluno" class="container mt-5">
-        <h3 class="text-start">Buscar Aluno</h3>
-        <form class="mt-1">
-            <label for="buscaCPF" class="form-label mt-1">Digite o nome do aluno:</label>
-            <input type="text" class="form-control" id="buscaCPF" placeholder="🔍︎" required>
-        </form>
-        <!--Preciso trazer os dados dos alunos buscados aqui:-->
-        <!--MONTAR UM formulário-->
+    <main>
         <div class="container mt-5">
-            <h3>Finge que há um formulário aqui</h3>
+            <h3 class="text-start">Gerenciamento de alunos, por favor selecione uma opção:</h3>
+
+            <div class="d-flex justify-content-start gap-3 mt-4 flex-wrap">
+                <button class="btn btn-info" id="btnCadastrarAluno" onclick="mostrarSecao('cadastro-Aluno')">
+                    <i class="fa-solid fa-user-plus me-2"></i>Cadastrar Aluno
+                </button>
+                <button class="btn btn-warning" id="btnBuscarAluno" onclick="mostrarSecao('buscar-Aluno')">
+                    <i class="fa-solid fa-user-pen me-2"></i>Buscar Aluno
+                </button>
+                <button class="btn btn-dark" id="btnVisualizarAluno" onclick="mostrarSecao('listar-Aluno')">
+                    <i class="fa-solid fa-list me-2"></i>Visualizar Alunos
+                </button>
+            </div>
         </div>
-    </section>
-    <!-- LISTAGEM DE ALUNOS -->
-    <section id="listar-Aluno">
-        <div class="container mt-5">
-            <h1 class="text-start">Alunos</h1>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Matrícula</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Curso</th>
-                        <th scope="col"> </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-</main>
-    <!---->
+
+        <!-- ? #################################################### CADASTRO DE ALUNOS  ####################################################-->
+
+        <section id="cadastro-Aluno" class="container mt-5">
+            <h3 class="text-start">Cadastro de novo Aluno</h3>
+
+            <form class="mt-4" id="formAluno" method="POST">
+                <input type="hidden" id="idCursoHidden" name="idCurso">
+
+                <label for="nome" class="form-label">Nome do Aluno:</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do aluno"
+                    required>
+
+                <label for="cursoId" class="form-label mt-3">Selecione o Curso:</label>
+                <select class="form-select" id="cursoId" name="cursoId" required>
+                    <option value="" disabled selected>--</option>
+                </select>
+
+                <button type="submit" class="btn btn-success mt-4">
+                    <i class=""></i>Cadastrar Aluno
+                </button>
+                <button type="reset" class="btn btn-danger mt-4 ms-2"> <!--FAZER UM BOTÃO PARA LIMPAR OS CAMPOS-->
+                    <i class=""></i>Cancelar
+            </form>
+        </section>
+
+        <!-- ? #################################################### VISUALIZAR ALUNO (UNICO)  ####################################################-->
+
+        <section id="buscar-Aluno" class="container mt-5">
+            <h3 class="text-start">Buscar Aluno</h3>
+            <form class="mt-1">
+                <label for="buscaCPF" class="form-label mt-1">Digite o nome do aluno:</label>
+                <input type="text" class="form-control" id="buscaAluno" name="buscaAluno" placeholder="🔍︎" required>
+            </form>
+            <!-- TODO Preciso trazer os dados do aluno buscados aqui:-->
+            <!--MONTAR UM formulário-->
+            <div class="container mt-5">
+                <h1 class="text-start">Dados do Aluno</h1>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Matrícula</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Disciplinas</th>
+                            <th scope="col">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td><button class="btn btn-danger">Excluir</button></td>
+                            <td><button class="btn btn-warning">Editar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ? #################################################### LISTAGEM DE TODOS OS ALUNOS  ####################################################-->
+        <section id="listar-Aluno">
+            <div class="container mt-5">
+                <h1 class="text-start">Alunos</h1>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Matrícula</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">>Disciplinas</th>
+                            <th scope="col">#</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- ? #################################################### FOOTER  ####################################################-->
+
     <footer class="footer" style="background-color: #144425; color: #B5D984; padding: 30px 0;">
         <div class="container">
             <div class="row">
@@ -169,63 +192,102 @@
         </div>
     </footer>
 
-    <!--SCRIPTS-->
+    <!-- ! #################################################### SCRIPTS  ####################################################-->
+    <!-- ? Cadastro de alunos -->
     <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // Ocultar seções ao carregar
+            document.getElementById('cadastro-Aluno').style.display = 'none';
+            document.getElementById('buscar-Aluno').style.display = 'none';
+            // document.getElementById('listar-Aluno').style.display = 'none';
 
-        document.getElementById('cadastro-Aluno').style.display = 'none';
-        document.getElementById('buscar-Aluno').style.display = 'none';
-        document.getElementById('listar-Aluno').style.display = 'none';
+            // Função para mostrar seções
+            function mostrarSecao(id) {
+                const sections = ['cadastro-Aluno', 'buscar-Aluno', 'listar-Aluno'];
+                sections.forEach(sec => {
+                    document.getElementById(sec).style.display = (sec === id) ? 'block' : 'none';
+                });
+            }
 
-
-        function mostrarSecao(id) {
-            const sections = ['cadastro-Aluno', 'buscar-Aluno', 'listar-Aluno'];
-            sections.forEach(sections => {
-                document.getElementById(sections).style.display = (sections === id) ? 'block' : 'none';
+            // Botões de navegação
+            document.getElementById('btnCadastrarAluno').addEventListener('click', () => {
+                mostrarSecao('cadastro-Aluno');
             });
-        }
 
-        document.getElementById('btnCadastrarAluno').addEventListener('click', () => {
-            mostrarSecao('cadastro-Aluno');
-        });
+            document.getElementById('btnBuscarAluno').addEventListener('click', () => {
+                mostrarSecao('buscar-Aluno');
+            });
 
-        document.getElementById('btnBuscarAluno').addEventListener('click', () => {
-            mostrarSecao('buscar-Aluno');
-        });
+            document.getElementById('btnVisualizarAluno').addEventListener('click', () => {
+                mostrarSecao('listar-Aluno');
+            });
 
-        document.getElementById('btnListar').addEventListener('click', () => {
-            mostrarSecao('listar-Aluno');
+            // Carregar cursos
+            fetch('http://localhost:5013/api/Curso')
+                .then(res => {
+                    if (!res.ok) throw new Error('Erro ao buscar cursos');
+                    return res.json();
+                })
+                .then(cursos => {
+                    const select = document.getElementById('cursoId');
+                    cursos.forEach(curso => {
+                        const option = document.createElement('option');
+                        option.value = curso.id;
+                        option.textContent = curso.descricao;
+                        select.appendChild(option);
+                    });
+                })
+                .catch(err => console.error('Erro ao carregar cursos:', err));
+
+            // Cadastro de aluno
+            document.getElementById('formAluno').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+
+                const aluno = {
+                    nome: formData.get('nome'),
+                    CursoId: parseInt(formData.get('cursoId'))
+                };
+                console.log("Enviando para API:", JSON.stringify(aluno));
+
+                fetch('http://localhost:5013/api/Aluno', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(aluno)
+                })
+                    .then(res => {
+                        if (!res.ok) throw new Error('Erro ao salvar aluno');
+                        return res.json();
+                    })
+                    .then(data => {
+                        alert('Aluno cadastrado com sucesso!');
+                        console.log(data);
+                        this.reset();
+                    })
+                    .catch(err => alert('Erro: ' + err.message));
+            });
         });
     </script>
+    <!-- ? Bucar e trazer um aluno só-->
+    <script>
+        const nomeAluno = document.getElementById('buscaAluno').value;
 
-<!--Salvar as informações no banco de dados-->
-<script>
-    document.getElementById('formAluno').addEventListener('submit', function(e) {
-      e.preventDefault(); 
-  
-      const formData = new FormData(this);
-      const aluno = {
-        nome: formData.get('nome'),
-        cursoId: parseInt(formData.get('cursoId'))
-      };
-  
-      fetch('https://localhost:5001/api/alunos', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(aluno)
-      })
-      .then(res => {
-        if (!res.ok) throw new Error('Erro ao salvar aluno');
-        return res.json();
-      })
-      .then(data => {
-        alert('Aluno cadastrado com sucesso!');
-        console.log(data);
-      })
-      .catch(err => alert('Erro: ' + err.message));
-    });
-  </script>
+        fetch(`http://localhost:5013/api/aluno/buscarpornome/${nomeAluno}`)
+            .then(res => {
+                if (!res.ok) throw new Error("Aluno não encontrado");
+                return res.json();
+            })
+            .then(data => {
+                console.log("Aluno encontrado:", data);
+                // atualizar DOM aqui
+            })
+            .catch(error => alert("Erro ao buscar aluno: " + error.message));
+    </script>
+
+    <!-- ? Listagem de alunos cadastrados-->
 </body>
 
 </html>

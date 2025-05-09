@@ -25,11 +25,12 @@ namespace SistemaEscolarApi.Controllers
         public async Task<ActionResult<IEnumerable<CursoDTO>>> GetCursos()
         {
             var cursos = await _context.Cursos
-                .Select(c => new CursoDTO { Descricao = c.Descricao })
+                .Select(c => new CursoDTO { ID = c.ID, Descricao = c.Descricao })
                 .ToListAsync();
 
             return Ok(cursos);
         }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CursoDTO cursoDTO)
         {
@@ -71,14 +72,14 @@ namespace SistemaEscolarApi.Controllers
             {
                 return NotFound("Curso não encontrado");
             }
-            
-            var cursoDTO = new CursoDTO 
+
+            var cursoDTO = new CursoDTO
             {
                 ID = curso.ID,
                 Descricao = curso.Descricao
             };
 
-            return Ok(cursoDTO); 
-        } 
+            return Ok(cursoDTO);
+        }
     }
 }
